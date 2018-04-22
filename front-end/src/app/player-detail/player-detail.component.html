@@ -12,14 +12,45 @@
       <h3>Nationality: {{player.country}}</h3>
       <h3>Draft Year: {{player.draftYear}}</h3>
     </div>
-    <div>
+    <div class="personal">
       <mat-grid-list [cols]="2" rowHeight="2:1">
-        <mat-grid-tile>Point Per Game</mat-grid-tile>
-        <mat-grid-tile>Rebounds Per Game</mat-grid-tile>
-        <mat-grid-tile>Assists Per Game</mat-grid-tile>
-        <mat-grid-tile>Block Per Game</mat-grid-tile>
-        <mat-grid-tile>Steal Per Game</mat-grid-tile>
-        <mat-grid-tile>Turnover Per Game</mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <span>Points Per Game</span>
+            <h3 style="text-align: center">{{personalStat.points}}</h3>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <span>Rebounds Per Game</span>
+            <h3 style="text-align: center">{{personalStat.rebounds}}</h3>
+          </div>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <div>
+            <span>Assists Per Game</span>
+            <h3 style="text-align: center">{{personalStat.assists}}</h3>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <span>Blocks Per Game</span>
+            <h3 style="text-align: center">{{personalStat.blocks}}</h3>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <span>Steals Per Game</span>
+            <h3 style="text-align: center">{{personalStat.steals}}</h3>
+          </div>
+        </mat-grid-tile>
+        <mat-grid-tile>
+          <div>
+            <span>Turnovers Per Game</span>
+            <h3 style="text-align: center">{{personalStat.turnovers}}</h3>
+          </div>
+        </mat-grid-tile>
       </mat-grid-list>
     </div>
   </div>

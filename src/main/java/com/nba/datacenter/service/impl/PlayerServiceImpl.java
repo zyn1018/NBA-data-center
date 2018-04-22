@@ -22,21 +22,29 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public ResponseEntity<?> getPlayersByInitial(String s) {
-        List<Player> playerList = playerDao.findPlayersByInitial(s);
-        if (playerList != null) {
-            return new ResponseEntity<>(playerList, HttpStatus.OK);
+        if (!s.equals("") && s.length() > 0) {
+            List<Player> playerList = playerDao.findPlayersByInitial(s);
+            if (playerList != null) {
+                return new ResponseEntity<>(playerList, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
         } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
     @Override
     public ResponseEntity<?> getPlayerInfoById(String id) {
-        Player player = playerDao.findPlayersById(id);
-        if (player != null) {
-            return new ResponseEntity<>(player, HttpStatus.OK);
+        if (!id.equals("") && id.length() > 0) {
+            Player player = playerDao.findPlayersById(id);
+            if (player != null) {
+                return new ResponseEntity<>(player, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
         } else {
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

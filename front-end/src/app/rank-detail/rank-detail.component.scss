@@ -3,6 +3,19 @@
   flex-direction: column;
 }
 
-mat-table {
-  overflow: auto;
+.table {
+  padding-top: 10px;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+}
+
+h1 {
+  padding-top: 20px;
+}
+
+a {
+  cursor: pointer;
 }

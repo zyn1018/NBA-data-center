@@ -1,59 +1,63 @@
+<h1 style="text-align: center;font-family: Arial;font-size: xx-large">{{title}}</h1>
 <div class="table">
-  <mat-table #table>
+  <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="PLAYER">
       <mat-header-cell *matHeaderCellDef>PLAYER</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat">
+        <a (click)="goToPlayerDetail(stat.playerId)">{{stat.name}}</a></mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="TEAM">
       <mat-header-cell *matHeaderCellDef>TEAM</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat">
+        <img *ngIf="stat.icon!=''" [src]="stat.icon">
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="POINTS">
       <mat-header-cell *matHeaderCellDef>POINTS</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{stat.points.toFixed(1)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="REB">
       <mat-header-cell *matHeaderCellDef>REB</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{stat.reb.toFixed(1)}}</mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="AST">
       <mat-header-cell *matHeaderCellDef>AST</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{stat.ast.toFixed(1)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="FG%">
       <mat-header-cell *matHeaderCellDef>FG%</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{(stat.fgpct*100).toFixed(0)}}%</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="FT%">
       <mat-header-cell *matHeaderCellDef>FT%</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{(stat.ftpct*100).toFixed(0)}}%</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="3P%">
       <mat-header-cell *matHeaderCellDef>3P%</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{(stat.threepct*100).toFixed(0)}}%</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="STL">
       <mat-header-cell *matHeaderCellDef>STL</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{stat.stl.toFixed(1)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="BLK">
       <mat-header-cell *matHeaderCellDef>BLK</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{stat.blk.toFixed(1)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="EFF">
       <mat-header-cell *matHeaderCellDef>EFF</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+      <mat-cell *matCellDef="let stat"> {{stat.eff.toFixed(1)}}</mat-cell>
     </ng-container>
 
 

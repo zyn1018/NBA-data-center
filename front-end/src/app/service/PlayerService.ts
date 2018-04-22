@@ -7,7 +7,7 @@ export class PlayerService {
   private playerListByInitialUrl = '/api/players/';
   private playerByIdUrl = '/api/player/';
   private getTeamRosterByIdUrl = '/api/roster/';
-  private getTop5PlayersByRankTypeUrl = '/api/rank/';
+  private getTop5PlayersByRankTypeUrl = '/api/top5rank/';
 
   private httpOptions = {
     headers: new HttpHeaders({

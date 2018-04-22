@@ -4,6 +4,8 @@ import {Router} from "@angular/router";
 import {Player} from "../domain/Player";
 import {TeamService} from "../service/TeamService";
 import {Team} from "../domain/Team";
+import {PersonalStat} from "../domain/PersonalStat";
+import {StatService} from "../service/StatService";
 
 @Component({
   selector: 'app-player-detail',
@@ -15,9 +17,11 @@ export class PlayerDetailComponent implements OnInit {
   private player: Player;
   private height: string;
   private team: Team;
+  private personalStat: PersonalStat;
 
   constructor(private playerService: PlayerService,
               private teamService: TeamService,
+              private statService: StatService,
               private router: Router) {
   }
 
@@ -31,6 +35,9 @@ export class PlayerDetailComponent implements OnInit {
     );
     this.teamService.getTeamByPlayerId(this.playerId).subscribe(data => {
       this.team = data;
+    });
+    this.statService.getPersonalStatByPlayerId(this.playerId).subscribe(data => {
+      this.personalStat = data;
     })
   }
 

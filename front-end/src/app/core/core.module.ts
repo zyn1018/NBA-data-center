@@ -5,6 +5,7 @@ import {FooterComponent} from './footer/footer.component';
 import {RouterModule} from "@angular/router";
 import {PlayerService} from "../service/PlayerService";
 import {TeamService} from "../service/TeamService";
+import {StatService} from "../service/StatService";
 
 
 @NgModule({
@@ -19,7 +20,7 @@ import {TeamService} from "../service/TeamService";
     FooterComponent,
     SharedModule
   ],
-  providers: [PlayerService, TeamService]
+  providers: [PlayerService, TeamService, StatService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parent: CoreModule) {

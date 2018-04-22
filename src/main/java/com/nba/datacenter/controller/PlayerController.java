@@ -31,7 +31,7 @@ public class PlayerController {
         return playerService.getTeamRosterByTeamId(teamId);
     }
 
-    @GetMapping("/rank/{rankType}")
+    @GetMapping("/top5rank/{rankType}")
     public ResponseEntity<?> getTop5PlayersByRankType(@PathVariable String rankType) {
         return playerService.getTop5PlayerByRankType(rankType);
     }
