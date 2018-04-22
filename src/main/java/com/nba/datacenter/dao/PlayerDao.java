@@ -132,7 +132,6 @@ public class PlayerDao {
                             "WHERE ROWNUM <= 5";
                     break;
             }
-            System.out.println(sql);
             PreparedStatement pstmt = conn.prepareStatement(sql);
             List<RankVo> rankVoList = new ArrayList<>();
             ResultSet rs = pstmt.executeQuery();

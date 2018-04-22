@@ -7,6 +7,7 @@ export class PlayerService {
   private playerListByInitialUrl = '/api/players/';
   private playerByIdUrl = '/api/player/';
   private getTeamRosterByIdUrl = '/api/roster/';
+  private getTop5PlayersByRankTypeUrl = '/api/rank/';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -28,5 +29,9 @@ export class PlayerService {
 
   public getTeamRosterByTeamId(teamId: string): Observable<any> {
     return this.http.get(this.getTeamRosterByIdUrl + teamId, this.httpOptions);
+  }
+
+  public getTop5PlayersByRankType(rankType: string): Observable<any> {
+    return this.http.get(this.getTop5PlayersByRankTypeUrl + rankType, this.httpOptions);
   }
 }

@@ -3,29 +3,73 @@
     <mat-grid-tile>
       <mat-card>
         <mat-card-header>
-          <mat-card-title class="word" [routerLink]="['/rank/points']">Points Per Game</mat-card-title>
+          <mat-card-title class="word" (click)="goToRankDetail('points')">Points Per Game</mat-card-title>
         </mat-card-header>
+        <mat-card-content>
+          <ol>
+            <li *ngFor="let player of top5PtsRank" style="font-size: medium">
+              <a (click)="goToPlayerDetail(player.playerId)"
+                 style="font-size: medium;font-family: Arial;line-height: 35px">
+                <span>{{player.name}}</span>
+                <span class="data">{{player.data.toFixed(1)}}</span>
+              </a>
+            </li>
+          </ol>
+        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card>
         <mat-card-header>
-          <mat-card-title class="word" [routerLink]="['/rank/rebounds']">Rebounds Per Game</mat-card-title>
+          <mat-card-title class="word" (click)="goToRankDetail('rebounds')">Rebounds Per Game</mat-card-title>
         </mat-card-header>
+        <mat-card-content>
+          <ol>
+            <li *ngFor="let player of top5RebRank" style="font-size: medium">
+              <a (click)="goToPlayerDetail(player.playerId)"
+                 style="font-size: medium;font-family: Arial;line-height: 35px">
+                <span>{{player.name}}</span>
+                <span class="data">{{player.data.toFixed(1)}}</span>
+              </a>
+            </li>
+          </ol>
+        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card>
         <mat-card-header>
-          <mat-card-title class="word" [routerLink]="['/rank/assists']">Assists Per Game</mat-card-title>
+          <mat-card-title class="word" (click)="goToRankDetail('assists')">Assists Per Game</mat-card-title>
         </mat-card-header>
+        <mat-card-content>
+          <ol>
+            <li *ngFor="let player of top5AstRank" style="font-size: medium">
+              <a (click)="goToPlayerDetail(player.playerId)"
+                 style="font-size: medium;font-family: Arial;line-height: 35px">
+                <span>{{player.name}}</span>
+                <span class="data">{{player.data.toFixed(1)}}</span>
+              </a>
+            </li>
+          </ol>
+        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-card>
         <mat-card-header>
-          <mat-card-title class="word" [routerLink]="['/rank/blocks']">Blocks Per Game</mat-card-title>
+          <mat-card-title class="word" (click)="goToRankDetail('blocks')">Blocks Per Game</mat-card-title>
         </mat-card-header>
+        <mat-card-content>
+          <ol>
+            <li *ngFor="let player of top5BlkRank" style="font-size: medium">
+              <a (click)="goToPlayerDetail(player.playerId)"
+                 style="font-size: medium;font-family: Arial;line-height: 35px">
+                <span>{{player.name}}</span>
+                <span class="data">{{player.data.toFixed(1)}}</span>
+              </a>
+            </li>
+          </ol>
+        </mat-card-content>
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

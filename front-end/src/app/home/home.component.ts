@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {RankVo} from "../vo/RankVo";
+import {PlayerService} from "../service/PlayerService";
 
 @Component({
   selector: 'app-home',
@@ -7,11 +9,29 @@ import {Router} from "@angular/router";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  private playerDetailUrl = '/player/';
+  private top5PtsRank: RankVo[];
+  private top5RebRank: RankVo[];
+  private top5AstRank: RankVo[];
+  private top5BlkRank: RankVo[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private playerService: PlayerService) {
   }
 
   ngOnInit() {
+    this.playerService.getTop5PlayersByRankType('pts').subscribe(data => {
+      this.top5PtsRank = data;
+    });
+    this.playerService.getTop5PlayersByRankType('reb').subscribe(data => {
+      this.top5RebRank = data;
+    });
+    this.playerService.getTop5PlayersByRankType('ast').subscribe(data => {
+      this.top5AstRank = data;
+    });
+    this.playerService.getTop5PlayersByRankType('blk').subscribe(data => {
+      this.top5BlkRank = data;
+    });
   }
 
   goToRankDetail(option: string) {
@@ -29,6 +49,10 @@ export class HomeComponent implements OnInit {
         this.router.navigateByUrl('/rank/blocks');
         break;
     }
+  }
+
+  goToPlayerDetail(playerId: number) {
+    this.router.navigateByUrl(this.playerDetailUrl + playerId);
   }
 
 }

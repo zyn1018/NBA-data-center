@@ -31,4 +31,17 @@ div {
   height: 100%;
 }
 
+a {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+}
 
+.data {
+  padding-right: 10px;
+}
+
+ol {
+  padding-top: 5px;
+}
