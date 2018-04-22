@@ -1,0 +1,32 @@
+<div>
+  <mat-grid-list [cols]="2" rowHeight="300px">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="word" [routerLink]="['/rank/points']">Points Per Game</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="word" [routerLink]="['/rank/rebounds']">Rebounds Per Game</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="word" [routerLink]="['/rank/assists']">Assists Per Game</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="word" [routerLink]="['/rank/blocks']">Blocks Per Game</mat-card-title>
+        </mat-card-header>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

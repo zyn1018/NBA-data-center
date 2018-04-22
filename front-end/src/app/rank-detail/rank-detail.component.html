@@ -1,0 +1,69 @@
+<div class="table">
+  <mat-table #table>
+    <ng-container matColumnDef="PLAYER">
+      <mat-header-cell *matHeaderCellDef>PLAYER</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="TEAM">
+      <mat-header-cell *matHeaderCellDef>TEAM</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="POINTS">
+      <mat-header-cell *matHeaderCellDef>POINTS</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="REB">
+      <mat-header-cell *matHeaderCellDef>REB</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+    </ng-container>
+
+
+    <ng-container matColumnDef="AST">
+      <mat-header-cell *matHeaderCellDef>AST</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="FG%">
+      <mat-header-cell *matHeaderCellDef>FG%</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="FT%">
+      <mat-header-cell *matHeaderCellDef>FT%</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="3P%">
+      <mat-header-cell *matHeaderCellDef>3P%</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="STL">
+      <mat-header-cell *matHeaderCellDef>STL</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="BLK">
+      <mat-header-cell *matHeaderCellDef>BLK</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+    </ng-container>
+
+    <ng-container matColumnDef="EFF">
+      <mat-header-cell *matHeaderCellDef>EFF</mat-header-cell>
+      <!--<mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>-->
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>

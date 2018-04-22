@@ -1,0 +1,34 @@
+<div class="page">
+  <mat-grid-list [cols]="2" rowHeight="650px">
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="word">WEST</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let team of teamsW">
+              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
+              <img *ngIf="team" [src]="team.icon">
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title class="word">EAST</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <ul>
+            <li *ngFor="let team of teamsE">
+              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
+              <img *ngIf="team" [src]="team.icon">
+            </li>
+          </ul>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

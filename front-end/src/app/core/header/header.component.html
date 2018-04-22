@@ -1,0 +1,8 @@
+<mat-toolbar color="primary">
+  <img src="https://s3-us-east-2.amazonaws.com/iconwebsite/dev/wp-content/uploads/2016/10/01015425/NBA.png"
+       (click)="goToHome()">
+  <button mat-button [routerLink]="['/home']">Home</button>
+  <button mat-button [routerLink]="['/teams']">Team</button>
+  <button mat-button [routerLink]="['/matches']">Match</button>
+  <button mat-button [routerLink]="['/players']">Player</button>
+</mat-toolbar>

@@ -1,0 +1,21 @@
+<div class="page">
+  <h1 class="team-name" *ngIf="team">{{team.city}} {{team.nickname}}</h1>
+  <div class="content" *ngIf="team">
+    <img *ngIf="team" [src]="team.icon">
+    <div>
+      <p>City: {{team.city}}</p>
+      <p>Arena: {{team.arena}}</p>
+      <p>Founded Year: {{team.yearFounded}}</p>
+      <p>Owner: {{team.owner}}</p>
+    </div>
+    <div>
+      <h1 class="roster-title" style="font-family: Arial">Team Roster</h1>
+      <div style="column-count: 4">
+        <div *ngFor="let player of roster">
+          <a (click)="goToPlayerDetail(player.playerId)"
+             style="font-family: Arial;line-height: 35px">{{player.name}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

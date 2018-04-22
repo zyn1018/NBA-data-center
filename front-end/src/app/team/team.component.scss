@@ -1,0 +1,54 @@
+mat-card {
+  width: 350px;
+  margin: 10px;
+  padding: 0;
+}
+
+.word {
+  color: white;
+  font-size: x-large;
+  padding-top: 10px;
+}
+
+mat-card-header {
+  background-color: midnightblue;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+mat-grid-list {
+  top: 30px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.page {
+  background-color: ghostwhite;
+  height: 100%;
+}
+
+.teamList {
+  position: center;
+  height: 100%;
+}
+
+a {
+  font-size: large;
+  cursor: pointer;
+}
+
+mat-card-content {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 20px;
+}
+
+img {
+  width: 30px;
+  height: 30px;
+}
