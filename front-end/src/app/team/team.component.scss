@@ -11,7 +11,7 @@ mat-card {
 }
 
 mat-card-header {
-  background-color: midnightblue;
+  background-color: #1565C0;
   padding: 5px;
   display: flex;
   flex-direction: row;
@@ -37,10 +37,12 @@ mat-grid-list {
 a {
   font-size: large;
   cursor: pointer;
+
 }
 
 mat-card-content {
   padding-top: 20px;
+  padding-right: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

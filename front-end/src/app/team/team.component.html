@@ -6,10 +6,10 @@
           <mat-card-title class="word">WEST</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <ul>
+          <ul style="list-style-type: none">
             <li *ngFor="let team of teamsW">
-              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
               <img *ngIf="team" [src]="team.icon">
+              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
             </li>
           </ul>
         </mat-card-content>
@@ -21,10 +21,10 @@
           <mat-card-title class="word">EAST</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <ul>
+          <ul style="list-style-type: none">
             <li *ngFor="let team of teamsE">
-              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
               <img *ngIf="team" [src]="team.icon">
+              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
             </li>
           </ul>
         </mat-card-content>

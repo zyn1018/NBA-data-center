@@ -3,10 +3,10 @@
   <div class="content" *ngIf="team">
     <img *ngIf="team" [src]="team.icon">
     <div>
-      <p>City: {{team.city}}</p>
-      <p>Arena: {{team.arena}}</p>
-      <p>Founded Year: {{team.yearFounded}}</p>
-      <p>Owner: {{team.owner}}</p>
+      <p><span style="font-weight: bold">City: </span><span>{{team.city}}</span></p>
+      <p><span style="font-weight: bold">Arena: </span><span>{{team.arena}}</span></p>
+      <p><span style="font-weight: bold">Year Founded: </span><span>{{team.yearFounded}}</span></p>
+      <p><span style="font-weight: bold">Owner: </span><span>{{team.owner}}</span></p>
     </div>
     <div>
       <h1 class="roster-title" style="font-family: Arial">Team Roster</h1>
