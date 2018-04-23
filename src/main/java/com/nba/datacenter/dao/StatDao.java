@@ -2,6 +2,7 @@ package com.nba.datacenter.dao;
 
 import com.nba.datacenter.domain.PersonalData;
 import com.nba.datacenter.domain.Stat;
+import com.nba.datacenter.domain.TableRecords;
 import com.nba.datacenter.utils.OracleUtil;
 import org.springframework.stereotype.Component;
 
@@ -132,6 +133,30 @@ public class StatDao {
             }
             OracleUtil.stopConnection(conn, pstmt);
             return personalData;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<TableRecords> getTableRecords() {
+        try {
+            Connection conn = OracleUtil.getConnection();
+            List<TableRecords> tableRecordsList = new ArrayList<>();
+            String sql = "SELECT\n" +
+                    "  T.TABLE_NAME,\n" +
+                    "  T.NUM_ROWS\n" +
+                    "FROM USER_TABLES T";
+            PreparedStatement pstmt = conn.prepareStatement(sql);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                TableRecords tableRecords = new TableRecords();
+                tableRecords.setTableName(rs.getString("TABLE_NAME"));
+                tableRecords.setNumRows(rs.getInt("NUM_ROWS"));
+                tableRecordsList.add(tableRecords);
+            }
+            OracleUtil.stopConnection(conn, pstmt);
+            return tableRecordsList;
         } catch (Exception e) {
             e.printStackTrace();
         }

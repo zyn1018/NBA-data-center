@@ -1,9 +1,10 @@
-<div class="page">
+<div *ngIf="player&&personalStat&&team" class="page">
   <img *ngIf="team" [src]="team.icon">
   <div class="detail" *ngIf="player">
     <div class="info" style="column-count: 2">
       <span style="white-space:nowrap;font-size: large;font-weight: bold">Name: {{player.name}}</span>
-      <h3 style="white-space: nowrap"><a (click)="goToTeamDetail(team.teamId)">Team: {{team.city}} {{team.nickname}}</a>
+      <h3 style="white-space: nowrap"><a (click)="goToTeamDetail(team.teamId)">Team:
+        {{team.city}} {{team.nickname}}</a>
       </h3>
       <h3>Age: {{player.age}}</h3>
       <h3>Height: {{height}}</h3>
@@ -16,38 +17,38 @@
       <mat-grid-list [cols]="2" rowHeight="2:1">
         <mat-grid-tile>
           <div>
-            <span>Points Per Game</span>
+            <span style="font-family: Arial;font-size: large">Points Per Game</span>
             <h3 style="text-align: center">{{personalStat.points}}</h3>
           </div>
         </mat-grid-tile>
         <mat-grid-tile>
           <div>
-            <span>Rebounds Per Game</span>
+            <span style="font-family: Arial;font-size: large">Rebounds Per Game</span>
             <h3 style="text-align: center">{{personalStat.rebounds}}</h3>
           </div>
         </mat-grid-tile>
 
         <mat-grid-tile>
           <div>
-            <span>Assists Per Game</span>
+            <span style="font-family: Arial;font-size: large">Assists Per Game</span>
             <h3 style="text-align: center">{{personalStat.assists}}</h3>
           </div>
         </mat-grid-tile>
         <mat-grid-tile>
           <div>
-            <span>Blocks Per Game</span>
+            <span style="font-family: Arial;font-size: large">Blocks Per Game</span>
             <h3 style="text-align: center">{{personalStat.blocks}}</h3>
           </div>
         </mat-grid-tile>
         <mat-grid-tile>
           <div>
-            <span>Steals Per Game</span>
+            <span style="font-family: Arial;font-size: large">Steals Per Game</span>
             <h3 style="text-align: center">{{personalStat.steals}}</h3>
           </div>
         </mat-grid-tile>
         <mat-grid-tile>
           <div>
-            <span>Turnovers Per Game</span>
+            <span style="font-family: Arial;font-size: large">Turnovers Per Game</span>
             <h3 style="text-align: center">{{personalStat.turnovers}}</h3>
           </div>
         </mat-grid-tile>

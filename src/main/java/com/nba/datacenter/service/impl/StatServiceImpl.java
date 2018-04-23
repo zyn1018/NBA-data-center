@@ -3,6 +3,7 @@ package com.nba.datacenter.service.impl;
 import com.nba.datacenter.dao.StatDao;
 import com.nba.datacenter.domain.PersonalData;
 import com.nba.datacenter.domain.Stat;
+import com.nba.datacenter.domain.TableRecords;
 import com.nba.datacenter.service.StatService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,6 +44,16 @@ public class StatServiceImpl implements StatService {
             }
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> getTableRecordsNum() {
+        List<TableRecords> tableRecordsList = statDao.getTableRecords();
+        if (tableRecordsList != null) {
+            return new ResponseEntity<>(tableRecordsList, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
     }
 }

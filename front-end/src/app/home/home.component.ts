@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {RankVo} from "../vo/RankVo";
 import {PlayerService} from "../service/PlayerService";
+import {StatService} from "../service/StatService";
+import {TableRecords} from "../domain/TableRecords";
 
 @Component({
   selector: 'app-home',
@@ -14,9 +16,11 @@ export class HomeComponent implements OnInit {
   private top5RebRank: RankVo[];
   private top5AstRank: RankVo[];
   private top5BlkRank: RankVo[];
+  private tableRecords: TableRecords[];
 
   constructor(private router: Router,
-              private playerService: PlayerService) {
+              private playerService: PlayerService,
+              private statService: StatService) {
   }
 
   ngOnInit() {
@@ -54,5 +58,13 @@ export class HomeComponent implements OnInit {
   goToPlayerDetail(playerId: number) {
     this.router.navigateByUrl(this.playerDetailUrl + playerId);
   }
+
+  getTableRecordsNum() {
+    this.statService.getTableRecordsNum().subscribe(data => {
+      this.tableRecords = data;
+      console.log(data);
+    })
+  }
+
 
 }

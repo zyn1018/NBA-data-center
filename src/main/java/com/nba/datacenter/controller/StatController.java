@@ -23,4 +23,9 @@ public class StatController {
     public ResponseEntity<?> getPersonalDataByPlayerId(@PathVariable String playerId) {
         return statService.getPersonalDataByPlayerId(playerId);
     }
+
+    @GetMapping("/tables")
+    public ResponseEntity<?> getTableRecordsNum() {
+        return statService.getTableRecordsNum();
+    }
 }

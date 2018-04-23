@@ -6,4 +6,6 @@ public interface StatService {
     ResponseEntity<?> getStatRankByRankType(String rankType);
 
     ResponseEntity<?> getPersonalDataByPlayerId(String playerId);
+
+    ResponseEntity<?> getTableRecordsNum();
 }

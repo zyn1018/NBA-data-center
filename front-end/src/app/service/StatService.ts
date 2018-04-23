@@ -6,6 +6,7 @@ import {Observable} from "rxjs/Observable";
 export class StatService {
   private getStatRankByRankTypeUrl = '/api/rank/';
   private getPersonalStatByPlayerIdUrl = '/api/personal_data/';
+  private getTablesRecordsUrl = '/api/tables';
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -22,5 +23,9 @@ export class StatService {
 
   public getPersonalStatByPlayerId(playerId: string): Observable<any> {
     return this.http.get(this.getPersonalStatByPlayerIdUrl + playerId, this.httpOptions);
+  }
+
+  public getTableRecordsNum(): Observable<any> {
+    return this.http.get(this.getTablesRecordsUrl, this.httpOptions);
   }
 }
