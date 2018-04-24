@@ -9,9 +9,33 @@ img {
 }
 
 h1 {
-  padding-top: 20px;
+  padding-top: 5px;
 }
 
 a {
   cursor: pointer;
+}
+
+.sort-by {
+  font-weight: bold;
+  font-size: large;
+}
+
+mat-header-row {
+  background-color: #0D47A1;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+mat-cell {
+  display: flex;
+  justify-content: center;
+}
+
+mat-spinner {
+  margin: 15em auto 0;
 }

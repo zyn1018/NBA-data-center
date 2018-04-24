@@ -48,16 +48,24 @@ ol {
 
 .num {
   position: absolute;
-  top: 70%;
+  top: 60%;
   right: 20px;
   height: 100px;
   font-family: Arial;
   font-size: small;
-  font-weight: bold;
 }
 
 .button {
   position: absolute;
   top: 85%;
   right: 30px;
+}
+
+.total {
+  font-weight: bold;
+}
+
+mat-spinner {
+  margin: 0 auto;
+  top: 3.5em;
 }

@@ -11,6 +11,8 @@ import {Router} from "@angular/router";
 export class TeamComponent implements OnInit {
   teamsW: Team[];
   teamsE: Team[];
+  loadedW = false;
+  loadedE = false;
 
 
   constructor(private teamService: TeamService,
@@ -21,9 +23,11 @@ export class TeamComponent implements OnInit {
   ngOnInit() {
     this.teamService.getTeamByDivision('w').subscribe(data => {
       this.teamsW = data;
+      this.loadedW = true;
     });
     this.teamService.getTeamByDivision('e').subscribe(data => {
       this.teamsE = data;
+      this.loadedE = true;
     });
   }
 

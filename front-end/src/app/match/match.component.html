@@ -1,20 +1,54 @@
-<div class="table">
-  <mat-table #table>
+<div class="page">
+  <form *ngIf="formModel" [formGroup]="formModel" (ngSubmit)="f.form.valid && search()" #f="ngForm">
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a start date" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker2" placeholder="Choose a end date" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+      <mat-datepicker #picker2></mat-datepicker>
+    </mat-form-field>
+    <small style="color: red;font-family: Arial;" *ngIf="!formModel.get('startDate').untouched && !formModel.get('endDate').untouched
+    && !formModel.valid">
+      End date should be greater than start date
+    </small>
+    <button mat-raised-button type="submit" color="primary" [disabled]="!formModel.valid">Search</button>
+  </form>
+</div>
+<mat-spinner *ngIf="!dataIsLoaded"></mat-spinner>
+<mat-spinner *ngIf="!searchLoaded"></mat-spinner>
+<div *ngIf="dataIsLoaded && searchLoaded" class="table">
+  <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="Date">
       <mat-header-cell *matHeaderCellDef> Date</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>-->
+      <mat-cell *matCellDef="let match"> {{match.matchDate}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Home">
       <mat-header-cell *matHeaderCellDef> Home</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>-->
+      <mat-cell *matCellDef="let match"><a (click)="goToTeamDetail(match.homeTeamId)">{{match.homeTeamName}}</a>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="VS">
+      <mat-header-cell *matHeaderCellDef> VS</mat-header-cell>
+      <mat-cell *matCellDef="let match" style="font-weight: bold"> VS</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="Away">
       <mat-header-cell *matHeaderCellDef> Away</mat-header-cell>
-      <!--<mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>-->
+      <mat-cell *matCellDef="let match"><a (click)="goToTeamDetail(match.homeTeamId)">{{match.awayTeamName}}</a>
+      </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="Box Score">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let match">
+        <button mat-button color="primary">BOX SCORE</button>
+      </mat-cell>
+    </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
@@ -25,3 +59,4 @@
                  [showFirstLastButtons]="true">
   </mat-paginator>
 </div>
+

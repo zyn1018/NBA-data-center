@@ -1,5 +1,6 @@
-<h1 style="text-align: center;font-family: Arial;font-size: xx-large">{{title}}</h1>
-<div class="table">
+<h1 style="text-align: center;font-family: Arial;font-size: xx-large;">{{title}}</h1>
+<mat-spinner *ngIf="!dataLoaded"></mat-spinner>
+<div class="table" *ngIf="dataLoaded">
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="PLAYER">
       <mat-header-cell *matHeaderCellDef>PLAYER</mat-header-cell>
@@ -16,18 +17,20 @@
 
     <ng-container matColumnDef="POINTS">
       <mat-header-cell *matHeaderCellDef>POINTS</mat-header-cell>
-      <mat-cell *matCellDef="let stat"> {{stat.points.toFixed(1)}}</mat-cell>
+      <mat-cell [ngClass]="{'sort-by': rankType =='points'}" *matCellDef="let stat"> {{stat.points.toFixed(1)}}
+      </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="REB">
       <mat-header-cell *matHeaderCellDef>REB</mat-header-cell>
-      <mat-cell *matCellDef="let stat"> {{stat.reb.toFixed(1)}}</mat-cell>
+      <mat-cell [ngClass]="{'sort-by': rankType =='rebounds'}" *matCellDef="let stat"> {{stat.reb.toFixed(1)}}
+      </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="AST">
       <mat-header-cell *matHeaderCellDef>AST</mat-header-cell>
-      <mat-cell *matCellDef="let stat"> {{stat.ast.toFixed(1)}}</mat-cell>
+      <mat-cell [ngClass]="{'sort-by': rankType =='assists'}" *matCellDef="let stat"> {{stat.ast.toFixed(1)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="FG%">
@@ -52,7 +55,7 @@
 
     <ng-container matColumnDef="BLK">
       <mat-header-cell *matHeaderCellDef>BLK</mat-header-cell>
-      <mat-cell *matCellDef="let stat"> {{stat.blk.toFixed(1)}}</mat-cell>
+      <mat-cell [ngClass]="{'sort-by': rankType =='blocks'}" *matCellDef="let stat"> {{stat.blk.toFixed(1)}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="EFF">

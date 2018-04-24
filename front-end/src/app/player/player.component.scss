@@ -7,7 +7,7 @@ h2 {
   margin-top: 0;
   padding-top: 5px;
   padding-left: 10px;
-  background-color: #757575;
+  background-color: #9E9E9E;
   color: white;
   height: 40px;
 }
@@ -16,4 +16,7 @@ a {
   cursor: pointer;
 }
 
-
+mat-spinner {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}

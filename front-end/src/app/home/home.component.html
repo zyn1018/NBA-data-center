@@ -6,7 +6,8 @@
           <mat-card-title class="word" (click)="goToRankDetail('points')">Points Per Game</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <ol>
+          <mat-spinner *ngIf="!dataLoaded1" [diameter]="80"></mat-spinner>
+          <ol *ngIf="dataLoaded1">
             <li *ngFor="let player of top5PtsRank" style="font-size: medium">
               <a (click)="goToPlayerDetail(player.playerId)"
                  style="font-size: medium;font-family: Arial;line-height: 35px">
@@ -24,7 +25,8 @@
           <mat-card-title class="word" (click)="goToRankDetail('rebounds')">Rebounds Per Game</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <ol>
+          <mat-spinner *ngIf="!dataLoaded2" [diameter]="80"></mat-spinner>
+          <ol *ngIf="dataLoaded2">
             <li *ngFor="let player of top5RebRank" style="font-size: medium">
               <a (click)="goToPlayerDetail(player.playerId)"
                  style="font-size: medium;font-family: Arial;line-height: 35px">
@@ -42,7 +44,8 @@
           <mat-card-title class="word" (click)="goToRankDetail('assists')">Assists Per Game</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <ol>
+          <mat-spinner *ngIf="!dataLoaded3" [diameter]="80"></mat-spinner>
+          <ol *ngIf="dataLoaded3">
             <li *ngFor="let player of top5AstRank" style="font-size: medium">
               <a (click)="goToPlayerDetail(player.playerId)"
                  style="font-size: medium;font-family: Arial;line-height: 35px">
@@ -60,7 +63,8 @@
           <mat-card-title class="word" (click)="goToRankDetail('blocks')">Blocks Per Game</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-          <ol>
+          <mat-spinner *ngIf="!dataLoaded4" [diameter]="80"></mat-spinner>
+          <ol *ngIf="dataLoaded4">
             <li *ngFor="let player of top5BlkRank" style="font-size: medium">
               <a (click)="goToPlayerDetail(player.playerId)"
                  style="font-size: medium;font-family: Arial;line-height: 35px">
@@ -76,6 +80,7 @@
 </div>
 <button class="button" mat-raised-button (click)="getTableRecordsNum()" color="primary">Tuples Count</button>
 <div class="num" *ngIf="tableRecords">
-  <p *ngFor="let tableRecord of tableRecords">{{tableRecord.tableName}} NumRows:
+  <p *ngFor="let tableRecord of tableRecords">{{tableRecord.tableName}}, NUM of rows =
     {{tableRecord.numRows}}</p>
+  <p class="total">Total Tuples = {{total}}</p>
 </div>

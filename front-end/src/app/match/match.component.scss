@@ -7,3 +7,28 @@
 mat-table {
   overflow: auto;
 }
+
+form {
+  padding-top: 50px;
+
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+mat-spinner {
+  margin: 12em auto 0;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: center;
+}
+
+mat-cell {
+  display: flex;
+  justify-content: center;
+}

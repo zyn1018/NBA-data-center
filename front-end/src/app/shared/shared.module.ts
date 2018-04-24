@@ -2,10 +2,10 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDatepickerModule,
   MatDividerModule,
   MatGridListModule,
-  MatIconModule, MatInputModule, MatPaginatorModule, MatTableModule,
+  MatIconModule, MatInputModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatTableModule,
   MatToolbarModule
 } from "@angular/material";
 
@@ -24,7 +24,10 @@ import {
     MatDividerModule,
     MatTableModule,
     MatPaginatorModule,
-    MatInputModule
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule {

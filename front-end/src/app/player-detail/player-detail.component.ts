@@ -6,6 +6,7 @@ import {TeamService} from "../service/TeamService";
 import {Team} from "../domain/Team";
 import {PersonalStat} from "../domain/PersonalStat";
 import {StatService} from "../service/StatService";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-player-detail',
@@ -18,11 +19,13 @@ export class PlayerDetailComponent implements OnInit {
   private height: string;
   private team: Team;
   private personalStat: PersonalStat;
+  private imageUrl: string;
 
   constructor(private playerService: PlayerService,
               private teamService: TeamService,
               private statService: StatService,
-              private router: Router) {
+              private router: Router,
+              private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -31,8 +34,10 @@ export class PlayerDetailComponent implements OnInit {
       data => {
         this.player = data;
         this.height = '' + Math.floor(this.player.height / 12) + '-' + this.player.height % 12;
+        this.imageUrl = 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/' + this.player.playerId + '.png';
       }
     );
+
     this.teamService.getTeamByPlayerId(this.playerId).subscribe(data => {
       this.team = data;
     });
