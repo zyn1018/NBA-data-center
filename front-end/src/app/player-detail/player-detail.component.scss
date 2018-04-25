@@ -2,11 +2,13 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .info {
   padding-top: 20px;
   font-family: Arial;
+  height: 10em;
 }
 
 mat-grid-tile {
@@ -22,7 +24,6 @@ mat-grid-tile {
 .page {
   display: flex;
   flex-direction: column;
-
   height: 100%;
   background-color: ghostwhite;
 }
@@ -48,4 +49,26 @@ a {
 .player-image {
   width: 260px;
   height: 190px;
+}
+
+.attribute {
+  color: #546E7A;
+  font-family: Impact;
+}
+
+.attribute2 {
+  color: #546E7A;
+  padding-left: 30px;
+  font-family: Impact;
+}
+
+.value {
+  padding-left: 20px;
+  font-family: Arial;
+  font-weight: lighter;
+}
+
+.stat {
+  font-family: Arial;
+  font-weight: lighter;
 }

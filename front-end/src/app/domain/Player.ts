@@ -9,7 +9,7 @@ export class Player {
               public country: string,
               public draftYear: string,
               public draftRound: string,
-              public draftNumber: string
+              public draftNumber: string,
   ) {
   }
 }

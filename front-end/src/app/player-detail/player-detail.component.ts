@@ -33,7 +33,7 @@ export class PlayerDetailComponent implements OnInit {
     this.playerService.getPlayerById(this.playerId).subscribe(
       data => {
         this.player = data;
-        this.height = '' + Math.floor(this.player.height / 12) + '-' + this.player.height % 12;
+        this.height = '' + Math.floor(this.player.height / 12) + ' ft ' + this.player.height % 12 + '″';
         this.imageUrl = 'https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/' + this.player.playerId + '.png';
       }
     );
