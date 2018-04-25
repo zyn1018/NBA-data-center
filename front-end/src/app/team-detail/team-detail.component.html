@@ -1,15 +1,19 @@
 <div class="page">
-  <h1 class="team-name" *ngIf="team">{{team.city}} {{team.nickname}}</h1>
+  <h1 class="team-name" *ngIf="team" style="font-family: Impact">{{team.city}} {{team.nickname}}</h1>
   <div class="content" *ngIf="team">
     <img *ngIf="team" [src]="team.icon">
     <div>
-      <p><span style="font-weight: bold">City: </span><span>{{team.city}}</span></p>
-      <p><span style="font-weight: bold">Arena: </span><span>{{team.arena}}</span></p>
-      <p><span style="font-weight: bold">Year Founded: </span><span>{{team.yearFounded}}</span></p>
-      <p><span style="font-weight: bold">Owner: </span><span>{{team.owner}}</span></p>
+      <p><span style="font-weight: bold;color: #546E7A;font-family: Impact;font-size: x-large">City </span><span
+        class="value">{{team.city}}</span></p>
+      <p><span style="font-weight: bold;color: #546E7A;font-family: Impact;font-size: x-large">Arena </span><span
+        class="value">{{team.arena}}</span></p>
+      <p><span style="font-weight: bold;color: #546E7A;font-family: Impact;font-size: x-large">Year Founded </span><span
+        class="value">{{team.yearFounded}}</span></p>
+      <p><span style="font-weight: bold;color: #546E7A;font-family: Impact;font-size: x-large">Owner </span><span
+        class="value">{{team.owner}}</span></p>
     </div>
     <div>
-      <h1 class="roster-title" style="font-family: Arial">Team Roster</h1>
+      <h2 class="roster-title" style="font-family: Impact;color: #546E7A;">Team Roster</h2>
       <div style="column-count: 4">
         <div *ngFor="let player of roster">
           <a (click)="goToPlayerDetail(player.playerId)"
