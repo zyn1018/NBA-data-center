@@ -1,0 +1,125 @@
+img {
+  width: 80px;
+  height: 80px;
+}
+
+.team-stat {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.name {
+  font-family: Impact;
+  font-size: large;
+  font-weight: bold;
+}
+
+.score {
+  font-family: Impact;
+  font-size: x-large;
+}
+
+.versus {
+  font-size: x-large;
+  font-family: "Arial Narrow";
+  color: #757575;
+}
+
+a {
+  cursor: pointer;
+}
+
+.home-title {
+  background-color: #1565C0;
+  color: white;
+  height: 40px;
+  font-family: Impact;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+.home-title2 {
+  background-color: #1565C0;
+  color: white;
+  height: 40px;
+  font-family: Impact;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.name-cell {
+  flex: 0 0 15%;
+}
+
+.total-cell {
+  flex: 0 0 19%;
+}
+
+.mid-header {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.mid-cell {
+  display: flex;
+  justify-content: center;
+  font-family: Arial;
+}
+
+.player-header-row {
+  background-color: #1A237E;
+}
+
+.table {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.name-span {
+  margin-left: 23px;
+}
+
+mat-row:nth-child(odd) {
+  background-color: #F5F5F5;
+}
+
+.table2 {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.table-team {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+.team-total-stat {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  font-family: Arial;
+}
+
+mat-divider {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+
+.total-header-row {
+  height: 20px;
+}

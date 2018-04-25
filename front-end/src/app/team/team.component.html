@@ -1,36 +1,41 @@
 <div class="page">
-  <mat-grid-list [cols]="2" rowHeight="650px">
-    <mat-grid-tile>
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title class="word">WEST</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-spinner *ngIf="!loadedW" [diameter]="70"></mat-spinner>
-          <ul *ngIf="loadedW" style="list-style-type: none">
-            <li *ngFor="let team of teamsW">
-              <img *ngIf="team" [src]="team.icon">
-              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
-            </li>
-          </ul>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title class="word">EAST</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-spinner *ngIf="!loadedE" [diameter]="70"></mat-spinner>
-          <ul *ngIf="loadedE" style="list-style-type: none">
-            <li *ngFor="let team of teamsE">
-              <img *ngIf="team" [src]="team.icon">
-              <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
-            </li>
-          </ul>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
+  <mat-spinner *ngIf="!loadedE"></mat-spinner>
+  <div *ngIf="loadedE">
+    <mat-grid-list [cols]="2" rowHeight="650px">
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title class="word">WEST</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <ul style="list-style-type: none">
+              <li *ngFor="let team of teamsW">
+                <div class="team">
+                  <img *ngIf="team" [src]="team.icon">
+                  <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
+                </div>
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title class="word">EAST</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <ul style="list-style-type: none">
+              <li *ngFor="let team of teamsE">
+                <div class="team">
+                  <img *ngIf="team" [src]="team.icon">
+                  <a (click)="goToTeamDetail(team.teamId)"> {{team.city + ' ' + team.nickname}}</a>
+                </div>
+              </li>
+            </ul>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </div>

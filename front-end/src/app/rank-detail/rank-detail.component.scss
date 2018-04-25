@@ -8,10 +8,6 @@ img {
   height: 40px;
 }
 
-h1 {
-  padding-top: 5px;
-}
-
 a {
   cursor: pointer;
 }
@@ -38,4 +34,12 @@ mat-cell {
 
 mat-spinner {
   margin: 15em auto 0;
+}
+
+mat-row:nth-child(odd) {
+  background-color: #F5F5F5;
+}
+
+.name-cell {
+  flex: 0 0 20%;
 }

@@ -1,9 +1,513 @@
-<div>
-  VS
+<div *ngIf="teamMatchStat" class="team-stat">
+  <a class="name" (click)="goToTeamDetail(teamMatchStat.homeId)">{{teamMatchStat.homeName}}</a>
+  <img [src]="teamMatchStat.homeIcon">
+  <span class="score">{{teamMatchStat.homeScores}} </span>
+  <span class="versus"> VS </span>
+  <span class="score">{{teamMatchStat.awayScores}}</span>
+  <img [src]="teamMatchStat.awayIcon">
+  <a class="name" (click)="goToTeamDetail(teamMatchStat.awayId)"> {{teamMatchStat.awayName}}</a>
 </div>
 <div>
-  Home Team Data
+  <div class="home-title" *ngIf="teamMatchStat"><span class="name-span">{{teamMatchStat.homeName}}</span></div>
+  <div class="table">
+    <mat-table #table [dataSource]="dataSourceHome">
+      <ng-container matColumnDef="PLAYER">
+        <mat-header-cell style="color: white" *matHeaderCellDef class="name-cell">PLAYER</mat-header-cell>
+        <mat-cell class="name-cell" *matCellDef="let personalMatchStat">
+          <a (click)="goToPlayerDetail(personalMatchStat.playerId)">{{personalMatchStat.name}}</a></mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="MIN">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>MIN</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat">
+          {{personalMatchStat.minutes}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FGM</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FGA</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FG%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FG%</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{(personalMatchStat.fgPct*100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>3PM</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgThreeM}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>3PA</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgThreeA}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3P%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>3P%</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat">
+          {{(personalMatchStat.fgThreePct*100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FTM</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.ftM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FTA</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.ftA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FT%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FT%</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{(personalMatchStat.ftPct*100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="OREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>OREB</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.oreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="DREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>DREB</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.dreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="REB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>REB</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.reb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="AST">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>AST</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.ast}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="TOV">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>TOV</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.tof}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="STL">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>STL</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.stl}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="BLK">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>BLK</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.blk}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PF">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>PF</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.pf}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PTS">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>PTS</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.pts}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="+/-">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>+/-</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.eff}}</mat-cell>
+      </ng-container>
+
+
+      <mat-header-row class="player-header-row" *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <div class="table">
+    <mat-table #table [dataSource]="dataSourceTeamHome">
+      <ng-container matColumnDef="TOTAL">
+        <mat-header-cell class="mid-header" *matHeaderCellDef class="total-cell"></mat-header-cell>
+        <mat-cell style="font-family: Impact" class="mid-cell" *matCellDef="let teamTotalStat" class="total-cell">
+          Total:
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FG%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{(teamTotalStat.fgM / teamTotalStat.fgA *
+          100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgThreeM}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgThreeA}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3P%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat">{{(teamTotalStat.fgThreeM / teamTotalStat.fgThreeA *
+          100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.ftM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.ftA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FT%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{(teamTotalStat.ftM / teamTotalStat.ftA *
+          100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="OREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.oreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="DREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.dreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="REB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.reb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="AST">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.ast}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="TOV">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.tof}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="STL">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.stl}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="BLK">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.blk}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PF">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.pf}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PTS">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.pts}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="+/-">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"><span *ngIf="teamMatchStat">{{teamMatchStat.homeScores - teamMatchStat.awayScores}}</span>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row class="total-header-row" *matHeaderRowDef="displayedColumnsTeam"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsTeam;"></mat-row>
+    </mat-table>
+  </div>
 </div>
 <div>
-  Away Team Data
+  <div class="home-title2" *ngIf="teamMatchStat"><span class="name-span">{{teamMatchStat.awayName}}</span></div>
+  <div class="table2">
+    <mat-table #table [dataSource]="dataSourceAway">
+      <ng-container matColumnDef="PLAYER">
+        <mat-header-cell style="color: white" *matHeaderCellDef class="name-cell">PLAYER</mat-header-cell>
+        <mat-cell class="name-cell" *matCellDef="let personalMatchStat">
+          <a (click)="goToPlayerDetail(personalMatchStat.playerId)">{{personalMatchStat.name}}</a></mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="MIN">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>MIN</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat">
+          {{personalMatchStat.minutes}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FGM</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FGA</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FG%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FG%</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{(personalMatchStat.fgPct*100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>3PM</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgThreeM}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>3PA</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.fgThreeA}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3P%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>3P%</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat">
+          {{(personalMatchStat.fgThreePct*100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FTM</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.ftM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FTA</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.ftA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FT%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>FT%</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{(personalMatchStat.ftPct*100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="OREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>OREB</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.oreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="DREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>DREB</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.dreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="REB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>REB</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.reb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="AST">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>AST</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.ast}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="TOV">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>TOV</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.tof}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="STL">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>STL</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.stl}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="BLK">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>BLK</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.blk}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PF">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>PF</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.pf}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PTS">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>PTS</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.pts}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="+/-">
+        <mat-header-cell class="mid-header" *matHeaderCellDef>+/-</mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let personalMatchStat"> {{personalMatchStat.eff}}</mat-cell>
+      </ng-container>
+
+
+      <mat-header-row class="player-header-row" *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div>
+  <div class="table-team">
+    <mat-table #table [dataSource]="dataSourceTeamAway">
+      <ng-container matColumnDef="TOTAL">
+        <mat-header-cell class="mid-header" *matHeaderCellDef class="total-cell"></mat-header-cell>
+        <mat-cell style="font-family: Impact" class="mid-cell" *matCellDef="let teamTotalStat" class="total-cell">
+          Total:
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FGA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FG%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{(teamTotalStat.fgM / teamTotalStat.fgA *
+          100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgThreeM}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3PA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.fgThreeA}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="3P%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat">{{(teamTotalStat.fgThreeM / teamTotalStat.fgThreeA *
+          100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTM">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.ftM}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FTA">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.ftA}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="FT%">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{(teamTotalStat.ftM / teamTotalStat.ftA *
+          100).toFixed(1)}}%
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="OREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.oreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="DREB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.dreb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="REB">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.reb}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="AST">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.ast}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="TOV">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.tof}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="STL">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.stl}}
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="BLK">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.blk}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PF">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.pf}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="PTS">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"> {{teamTotalStat.pts}}</mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="+/-">
+        <mat-header-cell class="mid-header" *matHeaderCellDef></mat-header-cell>
+        <mat-cell class="mid-cell" *matCellDef="let teamTotalStat"><span *ngIf="teamMatchStat">{{teamMatchStat.awayScores - teamMatchStat.homeScores}}</span>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row class="total-header-row" *matHeaderRowDef="displayedColumnsTeam"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsTeam;"></mat-row>
+    </mat-table>
+  </div>
 </div>

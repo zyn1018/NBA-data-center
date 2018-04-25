@@ -1,10 +1,10 @@
-<h1 style="text-align: center;font-family: Arial;font-size: xx-large;">{{title}}</h1>
+<h1 style="text-align: center;font-family: Impact;font-size: xx-large;">{{title}}</h1>
 <mat-spinner *ngIf="!dataLoaded"></mat-spinner>
 <div class="table" *ngIf="dataLoaded">
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="PLAYER">
-      <mat-header-cell *matHeaderCellDef>PLAYER</mat-header-cell>
-      <mat-cell *matCellDef="let stat">
+      <mat-header-cell class="name-cell" *matHeaderCellDef>PLAYER</mat-header-cell>
+      <mat-cell class="name-cell" *matCellDef="let stat">
         <a (click)="goToPlayerDetail(stat.playerId)">{{stat.name}}</a></mat-cell>
     </ng-container>
 
@@ -58,8 +58,8 @@
       <mat-cell [ngClass]="{'sort-by': rankType =='blocks'}" *matCellDef="let stat"> {{stat.blk.toFixed(1)}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="EFF">
-      <mat-header-cell *matHeaderCellDef>EFF</mat-header-cell>
+    <ng-container matColumnDef="+/-">
+      <mat-header-cell *matHeaderCellDef>+/-</mat-header-cell>
       <mat-cell *matCellDef="let stat"> {{stat.eff.toFixed(1)}}</mat-cell>
     </ng-container>
 

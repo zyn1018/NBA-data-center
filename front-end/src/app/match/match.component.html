@@ -10,10 +10,10 @@
       <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
       <mat-datepicker #picker2></mat-datepicker>
     </mat-form-field>
-    <small style="color: red;font-family: Arial;" *ngIf="!formModel.get('startDate').untouched && !formModel.get('endDate').untouched
-    && !formModel.valid">
-      End date should be greater than start date
-    </small>
+    <!--<small style="color: red;font-family: Arial;" *ngIf="!formModel.get('startDate').untouched && !formModel.get('endDate').untouched-->
+    <!--&& !formModel.valid">-->
+    <!--End date should be greater than start date-->
+    <!--</small>-->
     <button mat-raised-button type="submit" color="primary" [disabled]="!formModel.valid">Search</button>
   </form>
 </div>
@@ -46,7 +46,7 @@
     <ng-container matColumnDef="Box Score">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let match">
-        <button mat-button color="primary">BOX SCORE</button>
+        <button mat-button color="primary" (click)="goToMatchDetail(match.matchId)">BOX SCORE</button>
       </mat-cell>
     </ng-container>
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

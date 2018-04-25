@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatchService} from "../service/MatchService";
 import {Router} from "@angular/router";
 import {Match} from "../domain/Match";
@@ -49,7 +49,7 @@ export class MatchComponent implements OnInit {
       {
         startDate: [''],
         endDate: ['']
-      }, {validator: MatchComponent.checkDates}
+      }
     );
 
     this.matchService.getLastMonthMatches().subscribe(data => {
@@ -59,16 +59,16 @@ export class MatchComponent implements OnInit {
     });
   }
 
-  static checkDates(formModel: FormGroup) {
-    if (formModel.controls.endDate.value < formModel.controls.startDate.value) {
-      return {notValid: true};
-    }
-    return null;
-  }
+  // static checkDates(formModel: FormGroup) {
+  //   if (formModel.controls.endDate.value < formModel.controls.startDate.value) {
+  //     return {notValid: true};
+  //   }
+  //   return null;
+  // }
 
   search() {
     this.searchLoaded = false;
-    if (this.formModel.value.startDate == null || this.formModel.value.startDate == null) {
+    if (this.formModel.value.startDate == '' || this.formModel.value.endDate == '') {
       this.matchService.getLastMonthMatches().subscribe(data => {
         this.dataSource.data = data;
         this.searchLoaded = true;
@@ -82,7 +82,11 @@ export class MatchComponent implements OnInit {
     }
   }
 
-  goToTeamDetail(id: number) {
-    this.router.navigateByUrl('/team/' + id);
+  goToTeamDetail(teamId: number) {
+    this.router.navigateByUrl('/team/' + teamId);
+  }
+
+  goToMatchDetail(matchId: number) {
+    this.router.navigateByUrl('/match/' + matchId);
   }
 }

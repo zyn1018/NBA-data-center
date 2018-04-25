@@ -1,0 +1,25 @@
+export class PersonalMatchStat {
+  constructor(public id: number,
+              public name: string,
+              public minutes: string,
+              public fgM: number,
+              public fgA: number,
+              public fgPct: number,
+              public fgThreeM: number,
+              public fgThreeA: number,
+              public fgThreePct: number,
+              public ftM: number,
+              public ftA: number,
+              public ftPct: number,
+              public oreb: number,
+              public dreb: number,
+              public reb: number,
+              public ast: number,
+              public stl: number,
+              public blk: number,
+              public tof: number,
+              public pf: number,
+              public pts: number,
+              public eff: number) {
+  }
+}

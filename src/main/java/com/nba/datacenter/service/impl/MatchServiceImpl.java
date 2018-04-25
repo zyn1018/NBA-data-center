@@ -2,6 +2,9 @@ package com.nba.datacenter.service.impl;
 
 import com.nba.datacenter.dao.MatchDao;
 import com.nba.datacenter.domain.Match;
+import com.nba.datacenter.domain.PersonalMatchData;
+import com.nba.datacenter.domain.TeamMatchStat;
+import com.nba.datacenter.domain.TeamTotalStat;
 import com.nba.datacenter.service.MatchService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,6 +43,48 @@ public class MatchServiceImpl implements MatchService {
             } else {
                 return new ResponseEntity<>(HttpStatus.NO_CONTENT);
             }
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> getTeamMatchStatByMatchId(String matchId) {
+        if (matchId != null && matchId.length() > 0) {
+            TeamMatchStat teamMatchStat = matchDao.getTeamMatchStatByMatchId(matchId);
+            if (teamMatchStat != null) {
+                return new ResponseEntity<>(teamMatchStat, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> getPlayerMatchDataByMatchID(boolean isHome, String matchId) {
+        if (matchId != null && matchId.length() > 0) {
+            List<PersonalMatchData> personalMatchDataList = matchDao.getPlayersMatchDataByMatchId(isHome, matchId);
+            if (personalMatchDataList != null) {
+                return new ResponseEntity<>(personalMatchDataList, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @Override
+    public ResponseEntity<?> getTeamTotalStatByMatchId(boolean isHome, String matchId) {
+        if (matchId != null && matchId.length() > 0) {
+            List<TeamTotalStat> teamTotalStatList = matchDao.getTeamTotalStatByMatchId(isHome, matchId);
+            if (teamTotalStatList != null) {
+                return new ResponseEntity<>(teamTotalStatList, HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            }
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 }

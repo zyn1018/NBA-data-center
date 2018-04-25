@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {StatService} from "../service/StatService";
 import {Router} from "@angular/router";
 import {MatPaginator, MatTableDataSource} from "@angular/material";
@@ -12,7 +12,7 @@ import {Stat} from "../domain/Stat";
 export class RankDetailComponent implements OnInit {
 
   displayedColumns = ['PLAYER', 'TEAM', 'POINTS', 'REB', 'AST', 'FG%'
-    , 'FT%', '3P%', 'STL', 'BLK', 'EFF'];
+    , 'FT%', '3P%', 'STL', 'BLK', '+/-'];
 
   title: string;
   dataSource: MatTableDataSource<Stat[]>;

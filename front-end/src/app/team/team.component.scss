@@ -53,4 +53,17 @@ mat-card-content {
 img {
   width: 30px;
   height: 30px;
+  margin-right: 10px;
+}
+
+mat-spinner {
+  margin: 0 auto;
+  top: 19em;
+}
+
+.team {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
