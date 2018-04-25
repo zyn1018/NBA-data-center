@@ -23,6 +23,10 @@ export class MatchComponent implements OnInit {
               private router: Router) {
   }
 
+  /**
+   * Set paginator for table
+   * @param {MatPaginator} mp
+   */
   @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
     this.paginator = mp;
     this.setDataSourceAttributes();
@@ -59,16 +63,13 @@ export class MatchComponent implements OnInit {
     });
   }
 
-  // static checkDates(formModel: FormGroup) {
-  //   if (formModel.controls.endDate.value < formModel.controls.startDate.value) {
-  //     return {notValid: true};
-  //   }
-  //   return null;
-  // }
-
+  /**
+   * Search games played in the selected period of time
+   */
   search() {
     this.searchLoaded = false;
-    if (this.formModel.value.startDate == '' || this.formModel.value.endDate == '') {
+    if (this.formModel.value.startDate == '' || this.formModel.value.endDate == ''
+      || this.formModel.value.startDate == null || this.formModel.value.endDate == null) {
       this.matchService.getLastMonthMatches().subscribe(data => {
         this.dataSource.data = data;
         this.searchLoaded = true;
@@ -82,10 +83,18 @@ export class MatchComponent implements OnInit {
     }
   }
 
+  /**
+   * According to team id, navigate to certain team detail page
+   * @param {number} teamId
+   */
   goToTeamDetail(teamId: number) {
     this.router.navigateByUrl('/team/' + teamId);
   }
 
+  /**
+   * According to match id, navigate to a match detail page
+   * @param {number} matchId
+   */
   goToMatchDetail(matchId: number) {
     this.router.navigateByUrl('/match/' + matchId);
   }

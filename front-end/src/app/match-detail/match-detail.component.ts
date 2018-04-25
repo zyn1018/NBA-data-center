@@ -15,8 +15,6 @@ export class MatchDetailComponent implements OnInit {
 
   matchId: string;
   teamMatchStat: TeamMatchStat;
-  // teamTotalStatHome: TeamTotalStat;
-  // teamTotalStatAway: TeamTotalStat;
   dataSourceHome: MatTableDataSource<PersonalMatchStat[]>;
   dataSourceAway: MatTableDataSource<PersonalMatchStat[]>;
   dataSourceTeamHome: MatTableDataSource<TeamTotalStat[]>;
@@ -32,6 +30,9 @@ export class MatchDetailComponent implements OnInit {
               private matchService: MatchService) {
   }
 
+  /**
+   * Initialize stat tables
+   */
   ngOnInit() {
     this.matchId = this.router.url.split("/")[2];
     this.matchService.getTeamMatchStatByMatchId(this.matchId).subscribe(data => {

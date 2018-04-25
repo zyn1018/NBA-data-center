@@ -14,6 +14,13 @@ import java.util.List;
 
 @Component
 public class TeamDao {
+
+    /**
+     * Get the information of a team by team id
+     *
+     * @param teamId
+     * @return
+     */
     public Team getTeamByTeamId(String teamId) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -33,6 +40,12 @@ public class TeamDao {
         return null;
     }
 
+    /**
+     * Get all teams in one conference(west or east)
+     *
+     * @param s
+     * @return
+     */
     public List<Team> getTeamByDivision(String s) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -53,6 +66,12 @@ public class TeamDao {
         return null;
     }
 
+    /**
+     * Get information of a team by the id of its players
+     *
+     * @param playerId
+     * @return
+     */
     public Team getTeamByPlayerId(String playerId) {
         try {
             Connection conn = OracleUtil.getConnection();

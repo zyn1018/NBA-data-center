@@ -14,6 +14,12 @@ import java.util.List;
 
 @Component
 public class MatchDao {
+
+    /**
+     * Get all games played in the last month
+     *
+     * @return
+     */
     public List<Match> getLastMonthMatches() {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -55,6 +61,13 @@ public class MatchDao {
         return null;
     }
 
+    /**
+     * Get all games in a certain period of time
+     *
+     * @param startDate
+     * @param endDate
+     * @return
+     */
     public List<Match> getMatchesByDates(String startDate, String endDate) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -100,6 +113,12 @@ public class MatchDao {
         return null;
     }
 
+    /**
+     * Get teams' ids, icons, names played against in a match by the match id
+     *
+     * @param matchId
+     * @return
+     */
     public TeamMatchStat getTeamMatchStatByMatchId(String matchId) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -140,6 +159,13 @@ public class MatchDao {
         return null;
     }
 
+    /**
+     * Get all performance data of players who belongs to home or visitor team
+     *
+     * @param isHome
+     * @param matchId
+     * @return
+     */
     public List<PersonalMatchData> getPlayersMatchDataByMatchId(boolean isHome, String matchId) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -220,6 +246,13 @@ public class MatchDao {
         return null;
     }
 
+    /**
+     * Get the total performance statistics of a team(home or visitor) by match id.
+     *
+     * @param isHome
+     * @param matchId
+     * @return
+     */
     public List<TeamTotalStat> getTeamTotalStatByMatchId(boolean isHome, String matchId) {
         try {
             Connection conn = OracleUtil.getConnection();

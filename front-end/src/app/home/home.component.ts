@@ -48,6 +48,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /**
+   * Navigate to different ranking pages
+   * @param {string} option
+   */
   goToRankDetail(option: string) {
     switch (option) {
       case 'points':
@@ -65,10 +69,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  /**
+   * According to player id, navigate to player detail page
+   * @param {number} playerId
+   */
   goToPlayerDetail(playerId: number) {
     this.router.navigateByUrl(this.playerDetailUrl + playerId);
   }
 
+  /**
+   * Get the number of tuples in the database
+   */
   getTableRecordsNum() {
     this.statService.getTableRecordsNum().subscribe(data => {
       this.tableRecords = data;

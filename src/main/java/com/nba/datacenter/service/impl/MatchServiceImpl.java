@@ -21,7 +21,6 @@ public class MatchServiceImpl implements MatchService {
         this.matchDao = matchDao;
     }
 
-
     @Override
     public ResponseEntity<?> getLastMonthMatches() {
         List<Match> matchList = matchDao.getLastMonthMatches();

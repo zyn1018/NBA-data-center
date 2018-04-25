@@ -67,6 +67,9 @@ export class PlayerComponent implements OnInit {
               private router: Router) {
   }
 
+  /**
+   * Players are sorted by the first letter of their initials
+   */
   ngOnInit() {
     this.playerService.getPlayersByInitial('a').subscribe(data => {
       this.playersA = data;

@@ -15,6 +15,13 @@ import java.util.List;
 
 @Component
 public class StatDao {
+
+    /**
+     * Get all player's performance data in terms of a certain ranking type
+     *
+     * @param rankType
+     * @return
+     */
     public List<Stat> getStatRankByRankType(String rankType) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -112,6 +119,12 @@ public class StatDao {
         return null;
     }
 
+    /**
+     * Get a player's average data by his player id
+     *
+     * @param playerId
+     * @return
+     */
     public PersonalData getPersonalDataByPlayerId(String playerId) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -139,6 +152,11 @@ public class StatDao {
         return null;
     }
 
+    /**
+     * Get the number of tuples in the database
+     *
+     * @return
+     */
     public List<TableRecords> getTableRecords() {
         try {
             Connection conn = OracleUtil.getConnection();

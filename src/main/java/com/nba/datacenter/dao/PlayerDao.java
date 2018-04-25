@@ -14,6 +14,13 @@ import java.util.List;
 
 @Component
 public class PlayerDao {
+
+    /**
+     * Get players by the first letter of their initials
+     *
+     * @param s
+     * @return
+     */
     public List<Player> findPlayersByInitial(String s) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -34,6 +41,12 @@ public class PlayerDao {
         return null;
     }
 
+    /**
+     * Get information of a player by player id
+     *
+     * @param id
+     * @return
+     */
     public Player findPlayersById(String id) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -56,6 +69,12 @@ public class PlayerDao {
         return null;
     }
 
+    /**
+     * Get all team members of a team by team id
+     *
+     * @param teamId
+     * @return
+     */
     public List<Player> getTeamRosterByTeamId(String teamId) {
         try {
             Connection conn = OracleUtil.getConnection();
@@ -78,6 +97,12 @@ public class PlayerDao {
         return null;
     }
 
+    /**
+     * Get top 5 players of one rankings(points, rebounds, assists, blocks)
+     *
+     * @param rankType
+     * @return
+     */
     public List<RankVo> getTop5PlayersRank(String rankType) {
         try {
             Connection conn = OracleUtil.getConnection();
